@@ -14,15 +14,22 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent implements OnInit{
 
   constructor(private http:HttpClient,private toastr:ToastrService,private modalService: NgbModal) {
+this.fetchData()
+  }
+
+  ngOnInit() {
+
+  }
+
+
+  fetchData(){
     this.http.get('http://localhost:8000/user').subscribe((res:any)=>{
       this.dataList=res;
       console.log(this.dataList);
     })
   }
 
-  ngOnInit() {
 
-  }
   dataList:any=[];
   headers=['name','email','phone','college','major','project domain','project idea','edit','delete'];
   title = 'HCfrontEnd';
@@ -41,9 +48,12 @@ export class AppComponent implements OnInit{
     console.log(this.hackathonForm.value);
     this.http.post('http://localhost:8000/user',this.hackathonForm.value).subscribe(()=>{
       console.log('data posted');
+      this.toastr.success('congratulations', 'event awaits');
+      this.hackathonForm.reset();
+
+      this.fetchData()
+      console.log('Data Refetched')
     })
-    this.toastr.success('congratulations', 'event awaits');
-    this.hackathonForm.reset();
   }
 
   deleteUser(id:string){
@@ -83,28 +93,20 @@ export class AppComponent implements OnInit{
     projectIdea:new FormControl(null,Validators.required),
   })
 
-
-  updateUser(id:string){
-    console.log(id);
-    this.idFromUpperFunction=id;
-    this.iterateOverRow(id);
+  idForUpdate;
+  updateUser(data){
+    console.log(data);
+    this.hackathonFormUpdate.patchValue(data);
+    this.idForUpdate=data._id;
+    console.log(data._id);
   }
-  arrayForForm=[];
+  /*arrayForForm=[];*/
   idFromUpperFunction:string;
-  iterateOverRow(id:String){
+  /*iterateOverRow(id:String){
     console.log('hi');
     id=this.idFromUpperFunction;
     console.log(id);
-    for(let i =0;i<this.dataList.length;i++){
-      if(this.dataList[i]._id==id){
-        for(const key in this.dataList[i]){
-          if(this.dataList[i].hasOwnProperty(key)){
-            console.log(`${key}: ${this.dataList[i][key]}`);
-            this.arrayForForm.push(this.dataList[i][key]);
-          }
-        }
-      }
-    }
+
     console.log(this.arrayForForm);
     this.hackathonFormUpdate.patchValue({
       fullName: this.arrayForForm[1],
@@ -116,16 +118,15 @@ export class AppComponent implements OnInit{
       projectIdea:this.arrayForForm[7]
     });
     this.arrayForForm.length=0;
-  }
+  }*/
   onUpdate(){
-    console.log(this.hackathonFormUpdate.value);
-    console.log(this.idFromUpperFunction);
-    this.http.put('http://localhost:8000/user?id='+this.idFromUpperFunction,this.hackathonFormUpdate.value).subscribe(()=>{
+    /*console.log(this.hackathonFormUpdate.value);
+    console.log(this.idFromUpperFunction);*/
+    this.http.put('http://localhost:8000/user?id='+this.idForUpdate,this.hackathonFormUpdate.value).subscribe(()=>{
       console.log('update successful');
     })
     this.toastr.info('user updated','reload to check')
     this.hackathonFormUpdate.reset();
-
   }
 
 
