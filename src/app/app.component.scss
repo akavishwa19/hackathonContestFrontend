@@ -1,0 +1,113 @@
+.form-area {
+  display: block;
+  width: 100%;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  display: block;
+  height: 44px;
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+button{
+  width: 100%;
+  display: block;
+  height: 44px;
+  border-radius: .5rem;
+  margin-top:1rem;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+select {
+  width: 100%;
+  height: 44px;
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+input [type=date]{
+  max-width: 100%;
+  height: 44px;
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+label {
+  display: block;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: .9rem;
+  font-weight: bold;
+  color: #05060f99;
+  transition: color .3s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+input:hover,
+input:focus,
+input-group:hover .input,button:hover
+{
+  outline: none;
+  border-color: #05060f;
+}
+
+input-group:hover .label,
+input:focus {
+  color: #05060fc2;
+}
+
+.subheading{
+  margin-left: 10rem;
+}
+
+input.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
+input.ng-touched.ng-valid{
+  border: 2px solid #28c953;
+}
+.select.ng-touched.ng-invalid{
+  border:2px solid red;
+}
+
+.select.ng-touched.ng-valid{
+  border:2px solid #28c953;
+}
+
+.block2{
+  width: 32%;
+}
+.block3{
+  width: 100%;
+}
+.parentBlock{
+  display: flex;
+  justify-content: flex-start;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
