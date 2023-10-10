@@ -59,6 +59,7 @@ this.fetchData()
   deleteUser(id:string){
     this.http.delete('http://localhost:8000/user?id='+id).subscribe(()=>{
       console.log('delete successful');
+      this.fetchData();
     })
     this.toastr.error('user deleted','reload to check');
   }
@@ -124,6 +125,7 @@ this.fetchData()
     console.log(this.idFromUpperFunction);*/
     this.http.put('http://localhost:8000/user?id='+this.idForUpdate,this.hackathonFormUpdate.value).subscribe(()=>{
       console.log('update successful');
+      this.fetchData();
     })
     this.toastr.info('user updated','reload to check')
     this.hackathonFormUpdate.reset();
